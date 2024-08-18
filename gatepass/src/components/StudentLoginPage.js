@@ -8,16 +8,18 @@ const StudentLoginPage = () => {
   const navigate = useNavigate();
 
   function handleLogin() {
-    axios.post('http://localhost:3000/login', { email, password , type:2 })
-        .then(response => {
-            console.log(response.data);
-            navigate('/student/studentdashboard'); // Redirect to dashboard upon successful login
-        })
-        .catch(error => {
-            console.error('Login error:', error.response.data);
-            alert('Invalid credentials');
-        });
-}
+    axios.post('http://localhost:3000/login', { email, password, type: 2 })
+      .then(response => {
+        console.log(response.data);
+        // Store user data in local storage (or a more secure method)
+        localStorage.setItem('userEmail', email);
+        navigate('/student/studentdashboard'); // Redirect to dashboard upon successful login
+      })
+      .catch(error => {
+        console.error('Login error:', error.response.data);
+        alert('Invalid credentials');
+      });
+  }
 
   return (
     <div className="login-card">

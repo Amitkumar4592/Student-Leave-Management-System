@@ -29,15 +29,30 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/studentData', async (req, res) => {
+    const { email } = req.query;
+
     try {
         const { usersCollection } = await connectToMongoDB();
-        const student = await usersCollection.findOne({ email: req.query.email });
-        res.status(200).json(student);
+        const student = await usersCollection.findOne({ email });
+
+        if (!student) {
+            return res.status(404).json({ error: 'Student not found' });
+        }
+
+        res.status(200).json({
+            name: student.name,
+            rollno: student.rollno,
+            class: student.class
+        });
     } catch (error) {
         console.error('Error fetching student data:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
+
+
 
 app.post('/applyLeave', async (req, res) => {
     const { name, rollNumber, class: studentClass, leaveDescription, leaveDays } = req.body;
@@ -60,6 +75,8 @@ app.post('/applyLeave', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

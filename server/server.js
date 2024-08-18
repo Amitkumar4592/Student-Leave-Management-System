@@ -1,27 +1,66 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const { MongoClient, ObjectId } = require('mongodb');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const connectToMongoDB = require('./mongo');
+
 const app = express();
+const port = 3000;
 
-// Hardcoded configurations
-const port = 5000; // Port number
-const mongoURI = 'mongodb://localhost:27017/slms'; // MongoDB connection string
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.use(express.json());
+app.post('/login', async (req, res) => {
+    const { email, password, type } = req.body;
 
-// Basic route for testing
-app.get('/', (req, res) => {
-  res.send('Student Leave Management System Backend');
+    try {
+        const { usersCollection } = await connectToMongoDB();
+        const user = await usersCollection.findOne({ email });
+        if (user && password === user.password && type === user.type) {
+            res.status(200).json(user);
+        } else {
+            res.status(401).json({ error: 'Invalid credentials' });
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
-// Connect to MongoDB
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Could not connect to MongoDB', err));
+app.get('/studentData', async (req, res) => {
+    try {
+        const { usersCollection } = await connectToMongoDB();
+        const student = await usersCollection.findOne({ email: req.query.email });
+        res.status(200).json(student);
+    } catch (error) {
+        console.error('Error fetching student data:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
-// Start the server
+app.post('/applyLeave', async (req, res) => {
+    const { name, rollNumber, class: studentClass, leaveDescription, leaveDays } = req.body;
+
+    try {
+        const { leaveCollection } = await connectToMongoDB();
+        const leaveApplication = {
+            name,
+            rollNumber,
+            class: studentClass,
+            leaveDescription,
+            leaveDays,
+            status: 'Pending',
+            appliedDate: new Date(),
+        };
+        await leaveCollection.insertOne(leaveApplication);
+        res.status(200).json({ message: 'Leave applied successfully' });
+    } catch (error) {
+        console.error('Error applying leave:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });

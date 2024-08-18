@@ -1,0 +1,36 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+}
+
+.student-info {
+    margin-bottom: 20px;
+}
+
+.student-info p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dashboard-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-button:hover {
+    background-color: #45a049;
+}

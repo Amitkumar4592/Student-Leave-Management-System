@@ -1,0 +1,52 @@
+.dashboard-container {
+  display: flex;
+}
+
+.profile {
+  width: 40%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-right: 2px solid #ccc;
+}
+
+.profile h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.actions {
+  margin-left: 20px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #a71d2a;
+}

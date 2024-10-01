@@ -6,25 +6,22 @@ import './STYLES/ApplyLeavePage.css';
 const ApplyLeavePage = () => {
     const [leaveDescription, setLeaveDescription] = useState('');
     const [leaveDays, setLeaveDays] = useState('');
+    const [department, setDepartment] = useState('');
     const [student, setStudent] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [applyError, setApplyError] = useState(null);
+    const [successMessage, setSuccessMessage] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchStudentData = async () => {
             try {
-                const email = localStorage.getItem('userEmail'); // Retrieve email from local storage
-                if (!email) {
-                    setError('No email found.');
-                    setLoading(false);
-                    return;
-                }
-
+                const email = localStorage.getItem('userEmail');
                 const response = await axios.get('http://localhost:3000/studentData', {
                     params: { email }
                 });
-                setStudent(response.data);
+                setStudent({ ...response.data, email });
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching student data:', error);
@@ -37,8 +34,8 @@ const ApplyLeavePage = () => {
     }, []);
 
     const handleApplyLeave = async () => {
-        if (!leaveDescription || !leaveDays) {
-            alert('Please fill in all fields.');
+        if (!leaveDescription || !leaveDays || leaveDays <= 0 || !department) {
+            setApplyError('Please fill in all fields and ensure leave days is a positive number.');
             return;
         }
 
@@ -46,15 +43,21 @@ const ApplyLeavePage = () => {
             await axios.post('http://localhost:3000/applyLeave', {
                 name: student.name,
                 rollNumber: student.rollno,
-                class: student.class,
+                studentClass: student.class,
+                department,
+                email: student.email,
                 leaveDescription,
                 leaveDays
             });
-            alert('Leave applied successfully!');
+            setSuccessMessage('Leave applied successfully!');
+            setLeaveDescription('');
+            setLeaveDays('');
+            setDepartment('');
+            setApplyError(null);
             navigate('/student/studentdashboard');
         } catch (error) {
             console.error('Error applying leave:', error);
-            alert('Error applying leave. Please try again.');
+            setApplyError('Error applying leave. Please try again later.');
         }
     };
 
@@ -69,23 +72,39 @@ const ApplyLeavePage = () => {
     return (
         <div className="apply-leave-container">
             <h1>Apply for Leave</h1>
-            <form>
-                <div>
+            <form className="leave-form">
+                <div className="form-group">
                     <label>Description:</label>
                     <textarea
                         value={leaveDescription}
                         onChange={(e) => setLeaveDescription(e.target.value)}
+                        className="form-textarea"
+                        placeholder="Enter leave description..."
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Number of Days:</label>
                     <input
                         type="number"
                         value={leaveDays}
                         onChange={(e) => setLeaveDays(e.target.value)}
+                        className="form-input"
+                        placeholder="Enter number of days..."
                     />
                 </div>
-                <button type="button" onClick={handleApplyLeave}>Submit Leave Request</button>
+                <div className="form-group">
+                    <label>Department:</label>
+                    <input
+                        type="text"
+                        value={department}
+                        onChange={(e) => setDepartment(e.target.value)}
+                        className="form-input"
+                        placeholder="Enter your department..."
+                    />
+                </div>
+                {applyError && <p className="error-message">{applyError}</p>}
+                {successMessage && <p className="success-message">{successMessage}</p>}
+                <button type="button" onClick={handleApplyLeave} className="submit-button">Submit Leave Request</button>
             </form>
         </div>
     );

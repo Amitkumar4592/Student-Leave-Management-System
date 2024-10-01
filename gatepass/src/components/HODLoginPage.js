@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './styles/HODLoginPage.css'; 
 
 const HODLoginPage = () => {
     const [email, setEmail] = useState('');
@@ -26,7 +27,7 @@ const HODLoginPage = () => {
             <h1>HOD Login</h1>
             <input
                 type="email"
-                placeholder="User ID"
+                placeholder="Hod ID"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />

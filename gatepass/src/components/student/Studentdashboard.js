@@ -46,6 +46,10 @@ const StudentDashboard = () => {
         navigate('/student/leavehistory');
     };
 
+    const handleLogout = () => {
+        navigate('/');
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -70,6 +74,7 @@ const StudentDashboard = () => {
                 <button className="dashboard-button" onClick={handleApplyLeave}>Apply for Leave</button>
                 <button className="dashboard-button" onClick={handleCheckLeaveStatus}>Check Leave Status</button>
                 <button className="dashboard-button" onClick={handleViewLeaveHistory}>View Leave History</button>
+                <button className="dashboard-button logout-button" onClick={handleLogout}>Logout</button>
             </div>
         </div>
     );

@@ -1,0 +1,109 @@
+/* Container for leave requests */
+.leave-requests-container {
+    padding: 20px;
+    background: linear-gradient(135deg, #f7f8fa 0%, #e9eff1 100%); /* Light gradient background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    max-height: 600px; /* Set a max height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Title styling */
+.title {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease; /* Fade-in animation for title */
+}
+
+/* Leave requests list styling */
+.leave-requests-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Individual request card styling */
+.request-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.request-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* No requests message styling */
+.no-requests {
+    text-align: center;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+/* Button group styling */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* Button styling */
+.action-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.accept {
+    background-color: #4caf50; /* Green */
+}
+
+.accept:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+.reject {
+    background-color: #f44336; /* Red */
+}
+
+.reject:hover {
+    background-color: #e53935; /* Darker red */
+}
+
+.forward {
+    background-color: #2196f3; /* Blue */
+}
+
+.forward:hover {
+    background-color: #1976d2; /* Darker blue */
+}
+
+/* Loading and error message styling */
+.loading, .error {
+    text-align: center;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

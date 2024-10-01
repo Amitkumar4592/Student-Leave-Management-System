@@ -1,52 +1,83 @@
-.dashboard-container {
+/* Overall HOD Dashboard Container */
+.hod-dashboard-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Gradient background */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  margin: 40px auto;
+  transition: background 0.4s ease, transform 0.3s ease; /* Transition for background and transform */
 }
 
-.profile {
-  width: 40%;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-right: 2px solid #ccc;
+.hod-dashboard-container:hover {
+  transform: scale(1.02); /* Slight scaling effect on hover */
 }
 
-.profile h2 {
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 20px;
+/* Dashboard Title Styling */
+.hod-dashboard-container h1 {
+  font-size: 2.5rem;
+  color: #2c3e50; /* Darker text color */
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Text shadow for depth */
 }
 
+/* Action Buttons Container */
 .actions {
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between buttons */
+  width: 100%;
 }
 
-.action-button {
-  padding: 10px 20px;
-  margin: 10px;
-  background-color: #007bff;
-  color: #fff;
+/* Button Styling */
+.dashboard-button {
+  padding: 15px;
+  font-size: 1.1rem;
+  color: #fff; /* White text */
+  background-color: #2980b9; /* Blue color */
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  width: 100%;
+  position: relative; /* Position for the effect */
+  overflow: hidden; /* Hide overflow for the ripple effect */
 }
 
-.action-button:hover {
-  background-color: #0056b3;
+/* Button Hover Effect */
+.dashboard-button:hover {
+  background-color: #1c598a; /* Darker blue on hover */
+  transform: translateY(-3px); /* Lift effect on hover */
 }
 
+/* Logout Button Styling */
 .logout-button {
-  padding: 10px 20px;
-  margin-top: 20px;
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
+  background-color: #e74c3c; /* Red color for logout */
 }
 
 .logout-button:hover {
-  background-color: #a71d2a;
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Loading and Error Messages Styling */
+.loading, .error {
+  text-align: center;
+  font-size: 1.5rem; /* Larger font size */
+  color: #e74c3c; /* Red color for error */
+  margin: 30px; /* Margin around messages */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .hod-dashboard-container {
+      padding: 20px; /* Less padding on small screens */
+  }
+
+  .dashboard-button {
+      font-size: 0.9rem; /* Smaller font size on mobile */
+  }
 }

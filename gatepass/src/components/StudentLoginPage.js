@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './styles/StudentLoginPage.css'; // Import the CSS file
 
 const StudentLoginPage = () => {
   const [email, setEmail] = useState('');
@@ -26,17 +27,19 @@ const StudentLoginPage = () => {
       <h1>Student Login</h1>
       <input
         type="email"
-        placeholder="User ID"
+        placeholder="Student ID"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className="login-input"
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        className="login-input"
       />
-      <button onClick={handleLogin}>Login</button>
+      <button className="login-button" onClick={handleLogin}>Login</button>
     </div>
   );
 };

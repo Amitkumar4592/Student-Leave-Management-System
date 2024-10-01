@@ -1,47 +1,138 @@
+/* ApplyLeavePage.css */
+
+/* Overall container styling */
 .apply-leave-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    background: linear-gradient(135deg, #f0f4f8, #d1e0e9); /* Lighter gradient for a softer look */
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 50px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for scale and shadow effects */
 }
 
+.apply-leave-container:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
+}
+
+/* Title styling */
+.apply-leave-container h1 {
+    font-size: 2.5rem;
+    color: #2c3e50; /* Darker blue color */
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+/* Form styling */
+.leave-form {
+    width: 100%;
+}
+
+/* Form group styling */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    position: relative; /* Positioning for label animations */
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+/* Label styling */
+.form-group label {
+    font-size: 1.1rem;
+    color: #555; /* Medium gray color */
 }
 
-textarea,
-input {
+/* Textarea styling */
+.form-textarea {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 2px solid #3498db; /* Blue border */
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    resize: none; /* Disable resizing */
+    min-height: 100px; /* Minimum height for textarea */
 }
 
-.apply-leave-button {
+/* Input field styling */
+.form-input {
     width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #3498db; /* Blue border */
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Input field focus effect */
+.form-textarea:focus,
+.form-input:focus {
+    border-color: #2980b9; /* Darker blue on focus */
+    box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); /* Shadow effect on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button styling */
+.submit-button {
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #fff; /* White text */
+    background-color: #3498db; /* Blue color */
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions */
+    width: 100%; /* Full width button */
 }
 
-.apply-leave-button:hover {
-    background-color: #0056b3;
+/* Button hover effect */
+.submit-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
 }
 
+/* Error message styling */
 .error-message {
-    color: red;
-    margin-bottom: 15px;
+    color: #e74c3c; /* Red color */
+    margin-top: 10px;
+    text-align: center;
+    animation: fadeIn 0.5s; /* Fade-in effect */
+}
+
+/* Success message styling */
+.success-message {
+    color: #2ecc71; /* Green color */
+    margin-top: 10px;
+    text-align: center;
+    animation: fadeIn 0.5s; /* Fade-in effect */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .apply-leave-container {
+        padding: 20px; /* Less padding on small screens */
+    }
+
+    .apply-leave-container h1 {
+        font-size: 1.8rem; /* Smaller title size on mobile */
+    }
+
+    .submit-button {
+        font-size: 1rem; /* Smaller font size on mobile */
+    }
 }

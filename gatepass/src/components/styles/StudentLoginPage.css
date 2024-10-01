@@ -1,0 +1,81 @@
+/* StudentLoginPage.css */
+
+/* Overall Login Card Styling */
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #ffffff, #eaeaea); /* Light gradient background */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: 100px auto; /* Center the card vertically */
+  transition: transform 0.3s ease; /* Transition for scale effect */
+}
+
+.login-card:hover {
+  transform: scale(1.02); /* Slight scaling effect on hover */
+}
+
+/* Title Styling */
+.login-card h1 {
+  font-size: 2rem;
+  color: #34495e; /* Darker text color */
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Text shadow for depth */
+}
+
+/* Input Field Styling */
+.login-input {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: 2px solid #3498db; /* Blue border */
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Input Field Focus Effect */
+.login-input:focus {
+  border-color: #2980b9; /* Darker blue on focus */
+  box-shadow: 0 0 5px rgba(41, 128, 185, 0.5); /* Shadow effect on focus */
+  outline: none; /* Remove default outline */
+}
+
+/* Button Styling */
+.login-button {
+  padding: 15px;
+  font-size: 1.2rem;
+  color: #fff; /* White text */
+  background-color: #3498db; /* Blue color */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  width: 100%; /* Full width button */
+}
+
+/* Button Hover Effect */
+.login-button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+  .login-card {
+      padding: 20px; /* Less padding on small screens */
+  }
+
+  .login-card h1 {
+      font-size: 1.5rem; /* Smaller title size on mobile */
+  }
+
+  .login-button {
+      font-size: 1rem; /* Smaller font size on mobile */
+  }
+}

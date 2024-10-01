@@ -1,0 +1,111 @@
+/* ViewLeaveRequests.css */
+
+/* Overall Container Styling */
+.leave-requests-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Reduced padding */
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Gradient background */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 20px auto; /* Reduced margin */
+    transition: transform 0.3s ease; /* Transition for transform */
+}
+
+.leave-requests-container:hover {
+    transform: scale(1.02); /* Slight scaling effect on hover */
+}
+
+/* Dashboard Title Styling */
+.leave-requests-container h1 {
+    font-size: 2rem; /* Adjusted font size */
+    color: #2c3e50; /* Darker text color */
+    margin-bottom: 20px; /* Reduced margin */
+    text-align: center; /* Center align title */
+}
+
+/* Leave Requests List Styling */
+.leave-requests-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+/* Individual Leave Request Item Styling */
+.leave-request-item {
+    margin-bottom: 15px; /* Reduced margin */
+    padding: 15px; /* Reduced padding */
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+    transition: transform 0.2s ease; /* Transition for transform */
+}
+
+.leave-request-item:hover {
+    transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* Text Styling for Leave Request Item */
+.leave-request-item p {
+    font-size: 1rem; /* Adjusted font size */
+    color: #34495e; /* Slightly lighter gray for text */
+    margin: 3px 0; /* Adjusted margin for spacing */
+}
+
+/* Button Group Styling */
+.button-group {
+    display: flex;
+    gap: 8px; /* Space between buttons */
+}
+
+/* Action Button Styling */
+.action-button {
+    padding: 8px 12px; /* Reduced padding */
+    font-size: 1rem; /* Adjusted font size */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+/* Accept Button */
+.accept-button {
+    background-color: #28a745; /* Green color */
+}
+
+.accept-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Reject Button */
+.reject-button {
+    background-color: #dc3545; /* Red color */
+}
+
+.reject-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Loading and Error Messages Styling */
+.loading, .error {
+    text-align: center;
+    font-size: 1.2rem; /* Slightly smaller font size */
+    color: #e74c3c; /* Red color for error */
+    margin: 20px; /* Reduced margin around messages */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .leave-requests-container {
+        padding: 15px; /* Less padding on small screens */
+    }
+
+    .action-button {
+        font-size: 0.9rem; /* Smaller font size on mobile */
+    }
+}

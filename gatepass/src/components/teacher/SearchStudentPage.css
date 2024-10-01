@@ -1,0 +1,71 @@
+/* Container for the search student page */
+.search-student-container {
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e9eff1 100%); /* Light gradient background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto; /* Center the container */
+    text-align: center; /* Center align text */
+}
+
+/* Title styling */
+h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%; /* Use relative width */
+    margin-bottom: 10px;
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+/* Input focus styling */
+input[type="text"]:focus {
+    border-color: #2196f3; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button styling */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50; /* Green background */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Transition for button */
+}
+
+/* Button hover styling */
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Error message styling */
+.error {
+    color: #f44336; /* Red for errors */
+    margin-top: 10px;
+}
+
+/* Student info styling */
+.student-info {
+    margin-top: 20px;
+    background: #fff; /* White background for student info */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Student info text styling */
+.student-info p {
+    margin: 5px 0; /* Margin between paragraphs */
+    color: #333; /* Dark text color */
+}
